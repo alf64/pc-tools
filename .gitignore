@@ -1,0 +1,20 @@
+# Ignore the following types of files.
+
+# Compiled source #
+###################
+*.exe
+*.o
+*.so
+*.obj
+
+# Eclipse specifics #
+###################
+*.cproject
+*.project
+Release
+Debug
+.settings
+
+# OS specifics #
+###################
+Thumbs.db

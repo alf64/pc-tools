@@ -1,0 +1,65 @@
+# Copyright alf64.
+# This Makefile.win32 shall be used when building under Windows OS.
+# For build call: make -f Makefile.win32 all
+# For clean call: make -f Makefile.win32 clean
+
+# Special things for Windows
+OS_TYPE=win32
+# This is for getting current path dir
+PWD = %cd%
+# /d option is for allowing drive switches (i.e.: C: D:)
+CD = cd /d
+# this only removes directories at Windows
+RM = rmdir /S /Q
+# this removes files at Windows
+DEL = del /F /Q
+# this is for copying
+CP = copy /Y
+# this is for renaming
+REN = rename
+# for creating dirs
+MKDIR = -mkdir
+
+# A name of the target
+APP_NAME=SerialBinaryDumper.exe
+
+# a standard MinGW is needed to build this app under Windows
+GCC = g++
+
+# for fragments of the code that is sensitive to the OS_TYPE
+CUSTOM_DEFINES = -D OS_TYPE=$(OS_TYPE)
+
+# a path where .o files shall be placed
+APP_OBJ_OUTDIR = $(APP_NAME)/obj
+
+# a path where the resulting binary file shall be placed
+APP_BIN_OUTDIR = $(APP_NAME)/bin
+
+
+
+SRCS = rs232.cpp \
+    main.cpp \
+    sbdop.cpp
+    
+
+OBJS = $(APP_OBJ_OUTDIR)/rs232.o \
+    $(APP_OBJ_OUTDIR)/sbdop.o \
+    $(APP_OBJ_OUTDIR)/main.o
+
+
+.PHONY: all clean dirs
+all: $(APP_NAME)
+
+dirs:
+	$(MKDIR) "$(APP_OBJ_OUTDIR)"
+	$(MKDIR) "$(APP_BIN_OUTDIR)"
+
+$(APP_OBJ_OUTDIR)/%.o: %.cpp
+	@$(GCC) $(CUSTOM_DEFINES) -std=c++0x -O3 -Wall -c -o $@ $<
+
+$(APP_NAME): dirs $(OBJS)
+	@$(GCC) $(CUSTOM_DEFINES) -std=c++0x -O3 -Wall -o $(APP_BIN_OUTDIR)/$@ $(OBJS)
+
+clean:
+	-$(RM) "$(APP_NAME)"
+
