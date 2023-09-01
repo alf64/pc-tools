@@ -1,20 +1,57 @@
-# Ignore the following types of files.
+# Eclipse settings and build artifacts
+*.settings/
+*Release/
+*Debug/
 
-# Compiled source #
-###################
-*.exe
+# Prerequisites
+*.d
+
+# Object files
 *.o
-*.so
+*.ko
 *.obj
+*.elf
 
-# Eclipse specifics #
-###################
-*.cproject
-*.project
-Release
-Debug
-.settings
+# Linker output
+*.ilk
+*.map
+*.exp
 
-# OS specifics #
-###################
-Thumbs.db
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
