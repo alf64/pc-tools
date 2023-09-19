@@ -13,7 +13,7 @@
 using namespace std;
 
 int main() {
-	cout << "Hello Global Logic" << endl;
+	cout << "Hello! This is CppTester" << endl;
 
 	printf("\n2 + 2 = %d \n", CFUNCS_Add(2, 2));
 
@@ -24,6 +24,9 @@ int main() {
 	cppf1.PrintHi();
 
 	CFUNCS_FnCall(CFUNCS_Fn);
+
+    uint32_t sumResult = CFUNCS_Sum(1, 5);
+    printf("sumResult = %d\n", sumResult);
 
 	return 0;
 }

@@ -25,6 +25,8 @@ void CFUNCS_FnCall(cfuncs_fn_t func);
 
 void CFUNCS_Fn(uint16_t x);
 
+uint32_t CFUNCS_Sum(uint16_t x, uint16_t y);
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
