@@ -25,7 +25,7 @@ int main() {
 
 	CFUNCS_FnCall(CFUNCS_Fn);
 
-    uint32_t sumResult = CFUNCS_Sum(1, 5);
+    uint32_t sumResult = CFUNCS_Sum(56, 33);
     printf("sumResult = %d\n", sumResult);
 
 	return 0;

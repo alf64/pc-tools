@@ -25,52 +25,38 @@ void CFUNCS_FnCall(cfuncs_fn_t func)
 
 /*
  * @brief Sums two uint16_t values without
- * using + or -.
+ * using + or - operators.
+ *
+ * @param x First parameter
+ * @param y Second parameter
+ *
+ * @returns total value as uint32_t
  */
 uint32_t CFUNCS_Sum(uint16_t x, uint16_t y)
 {
-    bool carryOver = false;
     uint32_t result = 0;
 
-    uint8_t bitWidth = (sizeof(uint16_t) * 8);
+    uint32_t jobToDo = 0x1FFFF;
+    uint8_t carryOver = 0;
 
-    for(uint8_t i = 0; i < bitWidth; i++)
+    while(jobToDo)
     {
-        uint8_t xp = (x >> i) & 0x1;
-        uint8_t yp = (y >> i) & 0x1;
+        // get the bits
+        uint8_t xb = x & 0x1;
+        uint8_t yb = y & 0x1;
 
-        uint8_t res1 = xp ^ yp;
+        // calculate bit result and subsequent carryOver
+        uint8_t zb = carryOver ^ xb ^ yb;
+        carryOver = (xb & yb) | (carryOver & xb) | (carryOver & yb);
 
-        if(carryOver)
-        {
-            carryOver = false;
-            res1 ^= 1;
+        // update the bit in the result
+        result |= (zb << 17);
+        result >>= 1;
 
-            if(res1 == 0)
-            {
-                carryOver = true;
-            }
-        }
-
-        if((xp == 1 && yp == 1))
-        {
-            carryOver = true;
-        }
-
-        if(res1)
-        {
-            result |= (1<<i);
-        }
-        else
-        {
-            result &= ~(1<<i);
-        }
-
-        // carryOver last bit if needed (17th)
-        if((i == (bitWidth - 1)) && carryOver)
-        {
-            result |= (1<<(i+1));
-        }
+        // shift parameters and loop conditioner
+        x >>= 1;
+        y >>= 1;
+        jobToDo >>= 1;
     }
 
     return result;
