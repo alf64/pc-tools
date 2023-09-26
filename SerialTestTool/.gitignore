@@ -1,0 +1,64 @@
+# Ignore prerequisites
+*.d
+
+# Ignore Eclipse project files
+*.project
+*.cproject
+
+# Ignore Eclipse settings files
+*.settings/
+
+# Ignore Python temp files
+*__pychache__
+
+# Ignore object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Ignore Linker output
+*.ilk
+*.map
+*.exp
+
+# Ignore Precompiled Headers
+*.gch
+*.pch
+
+# Ignore Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Ignore Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Ignore Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Ignore Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Ignore Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+/Debug/
+/Release/
