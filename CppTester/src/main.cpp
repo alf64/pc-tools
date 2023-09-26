@@ -28,5 +28,11 @@ int main() {
     uint32_t sumResult = CFUNCS_Sum(56, 33);
     printf("sumResult = %d\n", sumResult);
 
+    sumResult = CFUNCS_SumV2(2, 3);
+    printf("sumResult = %d\n", sumResult);
+
+    void* m0ptr = CFUNCS_malloc0();
+    printf("ptr is: 0x%llx \n", (uint64_t)m0ptr);
+
 	return 0;
 }
